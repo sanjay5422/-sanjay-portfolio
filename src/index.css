@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default !important;
+  }
+
+  body {
+    background: transparent;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0A0A0A;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00FFFF, #9B59B6);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #9B59B6, #00FFFF);
+  }
+}
+
+@layer components {
+  .neon-border {
+    border: 2px solid #00FFFF;
+    box-shadow: 0 0 10px #00FFFF, inset 0 0 10px rgba(0, 255, 255, 0.1);
+  }
+
+  .neon-border-purple {
+    border: 2px solid #9B59B6;
+    box-shadow: 0 0 10px #9B59B6, inset 0 0 10px rgba(155, 89, 182, 0.1);
+  }
+
+  .glass-morphism {
+    background: rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .neon-text-cyan {
+    color: #00FFFF;
+    text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF;
+  }
+
+  .neon-text-purple {
+    color: #9B59B6;
+    text-shadow: 0 0 10px #9B59B6, 0 0 20px #9B59B6;
+  }
+
+  .hover-glow-cyan:hover {
+    box-shadow: 0 0 20px #00FFFF, 0 0 40px #00FFFF;
+    transform: translateY(-2px);
+  }
+
+  .hover-glow-purple:hover {
+    box-shadow: 0 0 20px #9B59B6, 0 0 40px #9B59B6;
+    transform: translateY(-2px);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #00FFFF, #9B59B6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .flip-card {
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front, .flip-card-back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+}
