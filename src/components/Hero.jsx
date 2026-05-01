@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaArrowDown } from 'react-icons/fa'
+import { playClickSound, playHoverSound } from '../utils/sounds'
 
 const Hero = () => {
   const [currentText, setCurrentText] = useState('')
@@ -107,7 +108,11 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.8 }}
           >
             <motion.button
-              onClick={() => scrollToSection('projects')}
+              onClick={() => {
+                playClickSound()
+                scrollToSection('projects')
+              }}
+              onMouseEnter={playHoverSound}
               className="px-8 py-3 neon-border rounded-lg text-cyan-400 font-semibold hover:bg-cyan-400/10 transition-all duration-300 hover-glow-cyan"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -115,16 +120,19 @@ const Hero = () => {
               View My Work
             </motion.button>
             
-            <motion.a
-              href="/resume.pdf"
-              download
+            <a 
+              href="/Sanjay_Resume.pdf"
+              download="Sanjay_K_Resume.pdf"
+              target="_blank"
+              onClick={playClickSound}
+              onMouseEnter={playHoverSound}
               className="px-8 py-3 neon-border-purple rounded-lg text-purple-400 font-semibold hover:bg-purple-400/10 transition-all duration-300 hover-glow-purple inline-flex items-center justify-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <FaDownload />
-              Download Resume
-            </motion.a>
+              ⬇ Download Resume
+            </a>
           </motion.div>
 
           {/* Social Links */}

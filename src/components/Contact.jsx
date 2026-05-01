@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaPaperPlane } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
+import { playSuccessSound } from '../utils/sounds'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -60,13 +62,35 @@ const Contact = () => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // 1. Go to https://emailjs.com and sign up free
+      // 2. Create a service (Gmail) — copy SERVICE_ID
+      // 3. Create a template with these variables:
+      //    {{from_name}}, {{from_email}}, {{message}}
+      // 4. Copy TEMPLATE_ID and PUBLIC_KEY
+      // 5. Replace the placeholder values below
+      
+      await emailjs.send(
+        'YOUR_SERVICE_ID',      // replace this
+        'YOUR_TEMPLATE_ID',     // replace this
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        'YOUR_PUBLIC_KEY'       // replace this
+      )
+      
       setSubmitStatus('success')
       setFormData({ name: '', email: '', message: '' })
-      setIsSubmitting(false)
+      playSuccessSound()  // from Feature 3
       setTimeout(() => setSubmitStatus(''), 5000)
-    }, 2000)
+    } catch (error) {
+      console.error('EmailJS error:', error)
+      setSubmitStatus('error')
+      setTimeout(() => setSubmitStatus(''), 5000)
+    }
+    setIsSubmitting(false)
   }
 
   const getIconColor = (color) => {
@@ -165,6 +189,16 @@ const Contact = () => {
                     className="mb-4 p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-400"
                   >
                     ✅ Message sent successfully! I'll get back to you soon.
+                  </motion.div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-4 p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400"
+                  >
+                    ❌ Failed to send message. Please try again.
                   </motion.div>
                 )}
 

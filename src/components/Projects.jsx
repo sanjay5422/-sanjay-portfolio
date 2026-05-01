@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaRobot, FaFlask, FaUtensils, FaShieldAlt, FaCode, FaExternalLinkAlt, FaGithub } from 'react-icons/fa'
+import { playHoverSound } from '../utils/sounds'
 
 const Projects = () => {
   const [flippedCard, setFlippedCard] = useState(null)
@@ -135,7 +136,10 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                onMouseEnter={() => setFlippedCard(project.id)}
+                onMouseEnter={() => {
+                  playHoverSound()
+                  setFlippedCard(project.id)
+                }}
                 onMouseLeave={() => setFlippedCard(null)}
               >
                 <div 

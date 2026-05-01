@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa'
+import { playHoverSound } from '../utils/sounds'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -60,6 +61,7 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:neon-text-cyan"
+                  onMouseEnter={playHoverSound}
                 >
                   {link.name}
                 </a>

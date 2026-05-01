@@ -5,6 +5,7 @@ import {
   FaDatabase, FaServer, FaCloud, FaShieldAlt, FaTools, FaCode,
   FaLock, FaChartLine, FaCogs
 } from 'react-icons/fa'
+import { playHoverSound } from '../utils/sounds'
 
 const Skills = () => {
   const [hoveredSkill, setHoveredSkill] = useState(null)
@@ -116,7 +117,10 @@ const Skills = () => {
                         borderColor: hoveredSkill === `${category}-${skill.name}` ? 
                           `var(--neon-${skill.color})` : 'rgba(255, 255, 255, 0.1)'
                       }}
-                      onMouseEnter={() => setHoveredSkill(`${category}-${skill.name}`)}
+                      onMouseEnter={() => {
+                        playHoverSound()
+                        setHoveredSkill(`${category}-${skill.name}`)
+                      }}
                       onMouseLeave={() => setHoveredSkill(null)}
                       whileHover={{ 
                         scale: 1.05,
