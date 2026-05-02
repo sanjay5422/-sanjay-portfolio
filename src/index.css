@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: #00FFFF;
+  --secondary: #9B59B6;
+  --bg: #000000;
+}
+
 @layer base {
   * {
     margin: 0;
@@ -37,14 +43,14 @@
 }
 
 @layer components {
-  .neon-border {
-    border: 2px solid #00FFFF;
-    box-shadow: 0 0 10px #00FFFF, inset 0 0 10px rgba(0, 255, 255, 0.1);
+  .neon-border-cyan {
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 10px var(--primary), inset 0 0 10px rgba(0, 255, 255, 0.1);
   }
 
   .neon-border-purple {
-    border: 2px solid #9B59B6;
-    box-shadow: 0 0 10px #9B59B6, inset 0 0 10px rgba(155, 89, 182, 0.1);
+    border: 2px solid var(--secondary);
+    box-shadow: 0 0 10px var(--secondary), inset 0 0 10px rgba(155, 89, 182, 0.1);
   }
 
   .glass-morphism {
@@ -55,27 +61,27 @@
   }
 
   .neon-text-cyan {
-    color: #00FFFF;
-    text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF;
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
   }
 
   .neon-text-purple {
-    color: #9B59B6;
-    text-shadow: 0 0 10px #9B59B6, 0 0 20px #9B59B6;
+    color: var(--secondary);
+    text-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
   }
 
   .hover-glow-cyan:hover {
-    box-shadow: 0 0 20px #00FFFF, 0 0 40px #00FFFF;
+    box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
     transform: translateY(-2px);
   }
 
   .hover-glow-purple:hover {
-    box-shadow: 0 0 20px #9B59B6, 0 0 40px #9B59B6;
+    box-shadow: 0 0 20px var(--secondary), 0 0 40px var(--secondary);
     transform: translateY(-2px);
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #00FFFF, #9B59B6);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

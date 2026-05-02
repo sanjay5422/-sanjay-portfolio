@@ -33,7 +33,7 @@ function ParticleGalaxy() {
     <Points ref={ref} positions={particles} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="#00FFFF"
+        color="var(--primary)"
         size={0.02}
         sizeAttenuation={true}
         depthWrite={false}
@@ -90,7 +90,7 @@ function PurpleParticles() {
     <Points ref={ref} positions={particles} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="#9B59B6"
+        color="var(--secondary)"
         size={0.015}
         sizeAttenuation={true}
         depthWrite={false}
@@ -136,19 +136,19 @@ export default function Background3D() {
         <PurpleParticles />
         <FloatingShape 
           position={[-4, 2, -3]} 
-          color="#00FFFF" 
+          color="var(--primary)" 
           speed={0.3} 
           shape="torus" 
         />
         <FloatingShape 
           position={[4, -1, -2]} 
-          color="#9B59B6" 
+          color="var(--secondary)" 
           speed={0.2} 
           shape="icosa" 
         />
         <FloatingShape 
           position={[-3, -2, -4]} 
-          color="#00FFFF" 
+          color="var(--primary)" 
           speed={0.25} 
           shape="octa" 
         />

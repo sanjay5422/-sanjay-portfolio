@@ -1,26 +1,30 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { ThemeProvider } from './context/ThemeContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Achievements from './components/Achievements'
+import Blog from './components/Blog'
 import Contact from './components/Contact'
 import Background3D from './components/Background3D'
 import Loader from './components/Loader'
 import MuteButton from './components/MuteButton'
 import AskSanjay from './components/AskSanjay'
+import ThemeSwitcher from './components/ThemeSwitcher'
 
 function App() {
   const [loading, setLoading] = useState(true)
 
   return (
-    <>
+    <ThemeProvider>
       {loading ? (
         <Loader onComplete={() => setLoading(false)} />
       ) : (
         <>
+          <ThemeSwitcher />
           <Background3D />
           <div className="relative min-h-screen overflow-x-hidden">
             {/* Main Content */}
@@ -33,6 +37,7 @@ function App() {
                 <Skills />
                 <Projects />
                 <Achievements />
+                <Blog />
                 <Contact />
               </main>
 
@@ -81,7 +86,7 @@ function App() {
           </div>
         </>
       )}
-    </>
+    </ThemeProvider>
   )
 }
 
